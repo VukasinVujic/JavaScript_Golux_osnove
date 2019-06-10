@@ -44,7 +44,33 @@ const deleteByText = function(todos,text){
         todos.splice(index,1);
     }
 }
-deleteByText(todos,'dddtodos5');
+
+const getThingsToDo = function(todos,forChecking){
+        return todos.filter(function(note){
+            if(!note.completed){
+                return true;
+            }  
+        })
+}
+
+const sortTodos = function(todos){
+    todos.sort(function(a,b){
+        if(a.completed >  b.completed){
+            return 1
+        } else {
+            return -1
+        }
+    })
+}
+
+// deleteByText(todos,'dddtodos5');
+// console.log(todos);
+
+// console.log(getThingsToDo(todos));
+
+sortTodos(todos);
 console.log(todos);
+
+
 
 
