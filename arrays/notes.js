@@ -1,5 +1,4 @@
-// const notes = ['notes1', 'notes2' ,'notes3'];
-const notes = [{},{
+const notes = [{
     title: 'My next trip',
     body: 'I would like to go to Spain'
 }, {
@@ -10,19 +9,19 @@ const notes = [{},{
     body: 'Get a new seat'
 }]
 
-const findNote = function(notes,noteTitle)
-{
-    const index = notes.findIndex(function(notes, noteTitle)
-    {
-        kvl;kdsflds;k
+const findNote = function(notes,noteTitle){
+    return notes.find(function(note,index) {
+        return note.title.toLowerCase() === noteTitle.toLowerCase()
     })
+    
 }
 
-const note = findNote(notes,'Office modification')
+// const findNote = function(notes,noteTitle){
+//     const index = notes.findIndex(function(note,index) {
+//         return note.title.toLowerCase() === noteTitle.toLowerCase()
+//     })
+//     return notes[index]
+// }
 
-const index = notes.findIndex(function(note, index){
-    console.log(note);
-    return note.title === 'Habbits to work on';
-})
-
-console.log(index);
+const note = findNote(notes, 'office modification')
+console.log(note);
