@@ -10,7 +10,15 @@ const notes = [{},{
     body: 'Get a new seat'
 }]
 
+const findNote = function(notes,noteTitle)
+{
+    const index = notes.findIndex(function(notes, noteTitle)
+    {
+        kvl;kdsflds;k
+    })
+}
 
+const note = findNote(notes,'Office modification')
 
 const index = notes.findIndex(function(note, index){
     console.log(note);
