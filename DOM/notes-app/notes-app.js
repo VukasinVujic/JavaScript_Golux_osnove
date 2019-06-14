@@ -1,13 +1,4 @@
-const notes = [{
-    title: 'my next trip',
-    body: 'I would like to go to Spain'
-}, {
-    title: 'Habbits to work on',
-    body: 'Exercise. Eating a bit better.'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}]
+let notes = []
 
 // const p = document.querySelector('h1')
 // p.remove()
@@ -24,36 +15,62 @@ const notes = [{
 
 const filters = {
     searchText: '',
-
 }
 
+// const user = {
+//     name : 'Vukasin',
+//     age: '32'
+// }
 
+// const userJSON = JSON.stringify(user)
+// console.log(userJSON);
+
+// localStorage.setItem('user', userJSON)
+
+// const userJSON = localStorage.getItem('user')
+// const user = JSON.parse(userJSON)
+// console.log(`${user.name} is ${user.age}`);
+
+const notesJson = localStorage.getItem('notes')
+
+if(notesJson !== null ) {
+    notes = JSON.parse(notesJSON)
+} 
 
 const renderNotes = function(notes, filters){
     const filteredNotes = notes.filter(function(note){
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
     })
     
-    document.querySelector('#notes').innerHTML = '<p>TEST</P>'
-
+    document.querySelector('#notes').innerHTML = ''
+    
     filteredNotes.forEach(function(note){
         const noteEl = document.createElement('p')
-        noteEl.textContent = note.title
+        
+        if(note.title.length > 0){
+            noteEl.textContent = note.title
+        } else {
+            noteEl.textContent = 'Nema naslova BRE'
+        }
         document.querySelector('#notes').appendChild(noteEl)
     })
 }
-
 renderNotes(notes,filters)
 
-document.getElementById('create-note').addEventListener('click', function(e){
-    e.target.textContent = 'the button was clicked'
+document.querySelector('#create-note').addEventListener('click', function(e){
+    // e.target.textContent = 'the button was clicked'
+    notes.push({
+        title: '',
+        body: ''
+    })
+    localStorage.setItem('notes', JSON.stringify(notes))
+    renderNotes(notes,filters)
 })
 
 document.querySelector('#search-text').addEventListener('input' , function(e){
     filters.searchText = e.target.value
     renderNotes(notes,filters)
 })
-
 
 // document.querySelector('#name-form').addEventListener('submit', function(e){
 //     e.preventDefault()

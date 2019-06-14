@@ -1,25 +1,16 @@
-const todos = [{
-    text: 'Order cat food',
-    completed: false
-}, {
-    text: 'Clean kitchen',
-    completed: true
-}, {
-    text: 'Buy food',
-    completed: true
-}, {
-    text: 'Do work',
-    completed: false
-}, {
-    text: 'Exercise',
-    completed: true
-}]
+let todos = []
 
 const filters = {
     searchText: '',
     hideCompleted : false
 }
 
+const todosJSON = localStorage.getItem('todos');
+
+if(todosJSON !== null) {
+    todos = JSON.parse(todosJSON)
+}
+// const bbb = JSON.parse('aaa')
 
 
 const renderTodos = function (todos, filters) {
@@ -32,8 +23,7 @@ const renderTodos = function (todos, filters) {
     /*
     filteredTodos = filteredTodos.filter(function(todo){
       //drugi nacin
-        return !filters.hideCompleted || !todo.completed
-       
+        return !filters.hideCompleted || !todo.completed       
        //Prvi nacin
         // if(filters.hideCompleted) {
         //     return !todo.completed
@@ -46,9 +36,8 @@ const renderTodos = function (todos, filters) {
         return !todo.completed 
    })
    
-
-    document.querySelector('#todos').innerHTML = ''
-
+    document.querySelector('#todos').innerHTML = ''// ovo radimo da se text izbrise svaki pu
+                                    //kada pritisnemo dugme
     const summary = document.createElement('h2')
     summary.textContent = `You have ${incompleteTodos.length} todos left`
     document.querySelector('#todos').appendChild(summary)
@@ -60,7 +49,9 @@ const renderTodos = function (todos, filters) {
     })
 }
 
-renderTodos(todos, filters)
+renderTodos(todos, filters)// ovo mora jer kada se u filter ubaci prazno polje to svi imaju
+// i sammim tim se svi prikazu, kada ne bi ovo stavio ne bi bio prikazan text uopste
+
 
 document.querySelector('#search-text').addEventListener('input', function (e) {
     filters.searchText = e.target.value
@@ -73,22 +64,18 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
         text: e.target.elements.text.value,
         completed: false
     })
+    localStorage.setItem('todos', JSON.stringify(todos))
     renderTodos(todos, filters)
     e.target.elements.text.value = ''
-})
- // ovo mora jer kada se u filter ubaci prazno polje to svi imaju
-    // i sammim tim se svi prikazu, kada ne bi ovo stavio ne bi bio prikazan text uopste
-
+}) 
 // todos.forEach(function(todo){
 //     const p = document.createElement('p')
 //     p.textContent = todo.texttodostodos
 //     document.querySelector('body').appendChild(p)
 // })
-
 // document.querySelector('#jaja').addEventListener('click',function(e){
     //         console.log('addding new to todo');     
     // })    
-
 /* MOJ NACIN
 const addingNewElement = function (todos, newElementToAdd){
     
