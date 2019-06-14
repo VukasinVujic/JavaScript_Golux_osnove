@@ -1,55 +1,12 @@
-let todos = []
+let todos = getSaveTodos()
 
 const filters = {
     searchText: '',
     hideCompleted : false
 }
 
-const todosJSON = localStorage.getItem('todos');
 
-if(todosJSON !== null) {
-    todos = JSON.parse(todosJSON)
-}
-// const bbb = JSON.parse('aaa')
-
-
-const renderTodos = function (todos, filters) {
-    let filteredTodos = todos.filter(function (todo) {
-        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-        const hideCompletedMatch = !filters.hideCompleted || !todo.completed
-        // return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-        return searchTextMatch && hideCompletedMatch
-    })
-    /*
-    filteredTodos = filteredTodos.filter(function(todo){
-      //drugi nacin
-        return !filters.hideCompleted || !todo.completed       
-       //Prvi nacin
-        // if(filters.hideCompleted) {
-        //     return !todo.completed
-        // } else {
-        //     return true
-        // }
-    })
-    */
-    const incompleteTodos = todos.filter(function(todo){
-        return !todo.completed 
-   })
-   
-    document.querySelector('#todos').innerHTML = ''// ovo radimo da se text izbrise svaki pu
-                                    //kada pritisnemo dugme
-    const summary = document.createElement('h2')
-    summary.textContent = `You have ${incompleteTodos.length} todos left`
-    document.querySelector('#todos').appendChild(summary)
-
-    filteredTodos.forEach(function (todo) {
-        const p = document.createElement('p')
-        p.textContent = todo.text
-        document.querySelector('#todos').appendChild(p)
-    })
-}
-
-renderTodos(todos, filters)// ovo mora jer kada se u filter ubaci prazno polje to svi imaju
+// renderTodos(todos, filters)// ovo mora jer kada se u filter ubaci prazno polje to svi imaju
 // i sammim tim se svi prikazu, kada ne bi ovo stavio ne bi bio prikazan text uopste
 
 
@@ -64,7 +21,8 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
         text: e.target.elements.text.value,
         completed: false
     })
-    localStorage.setItem('todos', JSON.stringify(todos))
+    saveTodos(todos)
+
     renderTodos(todos, filters)
     e.target.elements.text.value = ''
 }) 
