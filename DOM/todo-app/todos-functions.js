@@ -18,15 +18,25 @@ const saveTodos = function(todos){
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
+// remove todo by id
+const removeTodo = function(id){
+    const todoIndex = todos.findIndex(function(todo){
+        return todo.id === id
+    })
+    if(todoIndex > -1){
+        todos.splice(todoIndex,1);
+    }
+}
+
 //render todos in local storage
 const renderTodos = function (todos, filters) {
     let filteredTodos = todos.filter(function (todo) {
-        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-        const hideCompletedMatch = !filters.hideCompleted || !todo.completed
-        // return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-
-        return searchTextMatch && hideCompletedMatch
-    })
+    
+    const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    const hideCompletedMatch = !filters.hideCompleted || !todo.completed
+    // return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    return searchTextMatch && hideCompletedMatch
+})
     /*
     filteredTodos = filteredTodos.filter(function(todo){
       //drugi nacin
@@ -72,9 +82,14 @@ const generateTodoDOM = function(todo){
     removeButton.textContent = 'x'
     todoEl.appendChild(removeButton)
 
+    removeButton.addEventListener('click', function(e){
+        removeTodo(todo.id)
+        saveTodos(todo)
+        renderTodos(todos,filters) // nakon sto izbrise i sacuva ponovo izrenduje, ucita, na neki nacin ucita
+    })
+
     return todoEl
 }
-
 //get the dom elements for list sumary 
 const generateSummaryDOM = function (incompleteTodos){
    

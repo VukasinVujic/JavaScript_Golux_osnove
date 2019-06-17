@@ -22,7 +22,6 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
         completed: false
     })
     saveTodos(todos)
-
     renderTodos(todos, filters)
     e.target.elements.text.value = ''
 }) 

@@ -10,6 +10,12 @@
     <h1>Naslov</h1>
     <h2>naslov 2</h2>
      <input id="search-text" type="text" placeholder="filter notes">
+     <select id="filter-by">
+         <option value="byEdited" >Sort by last edited</option>
+         <option value="byCreated" >Sort by last recently created</option>
+         <option value="alphabetical" >Sort alphabeticly</option>
+     </select>
+     
     <div id="notes">
 
     </div>
@@ -25,11 +31,6 @@
         <input id="for-fun" type="checkbox">Checke me for fun
     </label> -->
     
-    <select id="filter-by">
-        <option value="byEdited" >Sort by last edited</option>
-        <option value="byCreated" >Sort by last recently created</option>
-        <option value="alphabetical" >Sort alphabeticly</option>
-    </select>
 
     <!-- <script src="https://gist.githubusercontent.com/andrewjmead/d64087c46129fc58df67c361cb01e889/raw/0a5225ee0e4382059ba7e439a882ece94a6e27f4/uuidv4.js"></script> -->
     <script src="adding.js" ></script>
