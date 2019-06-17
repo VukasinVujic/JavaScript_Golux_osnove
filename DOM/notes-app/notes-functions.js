@@ -1,3 +1,6 @@
+console.log(uuidv4());
+
+
 //Read existing notes from loacalstorage
 
 const getSavedNotes = function(){
@@ -9,13 +12,11 @@ if(notesJson !== null ) {
 } else {
     return []
 }
-
 }
 
 //Save the notes to the local storage
 const saveNotes = function(notes) {
     localStorage.setItem('notes', JSON.stringify(notes))
-
 }
 
 //generat the dom structure for the note 

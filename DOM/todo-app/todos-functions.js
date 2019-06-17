@@ -1,3 +1,6 @@
+console.log(uuidv4());
+
+
 // fetching existing todos from localstorage
 const getSaveTodos = function (){
 
