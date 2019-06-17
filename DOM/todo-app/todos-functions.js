@@ -1,16 +1,17 @@
 console.log(uuidv4());
 
 
+
 // fetching existing todos from localstorage
 const getSaveTodos = function (){
 
 const todosJSON = localStorage.getItem('todos');
 
-if(todosJSON !== null) {
-    return JSON.parse(todosJSON)
-}else {
-    return []
-}
+    if(todosJSON !== null) {
+        return JSON.parse(todosJSON)
+    }else {
+        return []
+    }
 
 }
 // saving data in loacalstorage
@@ -25,6 +26,16 @@ const removeTodo = function(id){
     })
     if(todoIndex > -1){
         todos.splice(todoIndex,1);
+    }
+}
+
+// update todo by id 
+const toggleTodo = function(id){
+    const todo = todos.find(function(todo){
+        return todo.id === id
+    })
+    if(todo !== undefined){
+        todo.completed = !todo.completed
     }
 }
 
@@ -72,6 +83,7 @@ const generateTodoDOM = function(todo){
     
     //set up todo checkbox
     checkBox.setAttribute('type','checkbox')
+    checkBox.checked = todo.completed 
     todoEl.appendChild(checkBox)
 
     //set the text todo
@@ -86,6 +98,11 @@ const generateTodoDOM = function(todo){
         removeTodo(todo.id)
         saveTodos(todo)
         renderTodos(todos,filters) // nakon sto izbrise i sacuva ponovo izrenduje, ucita, na neki nacin ucita
+    })
+    checkBox.addEventListener('change', function(){
+        toggleTodo(todo.id)
+        saveTodos(todo)
+        renderTodos(todos,filters)
     })
 
     return todoEl

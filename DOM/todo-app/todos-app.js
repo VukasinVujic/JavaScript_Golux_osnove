@@ -76,3 +76,8 @@ document.querySelector('#hide-completed').addEventListener('change', function(e)
     filters.hideCompleted = e.target.checked
     renderTodos(todos,filters)
 }) 
+
+// document.querySelector('#todos').addEventListener('change', function(e){
+//     updateTodo(id)
+//     renderTodos(todos,filters)
+// })
