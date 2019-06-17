@@ -20,14 +20,22 @@ const saveNotes = function(notes) {
 
 //generat the dom structure for the note 
 const generateNoteDOM = function(note){
-    const noteEl = document.createElement('p')
-        
+    const noteEl = document.createElement('div')
+    const textEl = document.createElement('span')
+    const button = document.createElement('button')
+    
+    //setup the remove note button
+    button.textContent = 'x'
+    noteEl.appendChild(button)
+
+        //setup the note tittle text
         if(note.title.length > 0){
-            noteEl.textContent = note.title
+            textEl.textContent = note.title
         } else {
-            noteEl.textContent = 'Nema naslova BRE'
+            textEl.textContent = 'Nema naslova BRE'
         }
-        return notEle
+        noteEl.appendChild(textEl)
+        return noteEl
 }
 // render application notes
 const renderNotes = function(notes, filters){

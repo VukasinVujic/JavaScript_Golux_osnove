@@ -5,7 +5,6 @@ const filters = {
     hideCompleted : false
 }
 
-
 // renderTodos(todos, filters)// ovo mora jer kada se u filter ubaci prazno polje to svi imaju
 // i sammim tim se svi prikazu, kada ne bi ovo stavio ne bi bio prikazan text uopste
 

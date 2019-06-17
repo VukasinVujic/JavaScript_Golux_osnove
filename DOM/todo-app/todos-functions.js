@@ -21,6 +21,7 @@ const renderTodos = function (todos, filters) {
         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
         const hideCompletedMatch = !filters.hideCompleted || !todo.completed
         // return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+
         return searchTextMatch && hideCompletedMatch
     })
     /*
@@ -40,7 +41,7 @@ const renderTodos = function (todos, filters) {
    })
    document.querySelector('#todos').innerHTML = ''// ovo radimo da se text izbrise svaki pu
    //kada pritisnemo dugme
-   
+
    document.querySelector('#todos').appendChild(generateSummaryDOM(incompleteTodos))
    
    filteredTodos.forEach(function (todo) {
@@ -48,12 +49,27 @@ const renderTodos = function (todos, filters) {
     })
     
 }
-
+ 
 //Get the DOM elements for the individual note
 const generateTodoDOM = function(todo){
-    const p = document.createElement('p')
-    p.textContent = todo.text
-    return p
+    const todoEl = document.createElement('div')
+    const checkBox = document.createElement('input')
+    const todoText = document.createElement('span')
+    const removeButton = document.createElement('button')
+    
+    //set up todo checkbox
+    checkBox.setAttribute('type','checkbox')
+    todoEl.appendChild(checkBox)
+
+    //set the text todo
+    todoText.textContent = todo.text
+    todoEl.appendChild(todoText)    
+
+    //set the remove button
+    removeButton.textContent = 'x'
+    todoEl.appendChild(removeButton)
+
+    return todoEl
 }
 
 //get the dom elements for list sumary 
