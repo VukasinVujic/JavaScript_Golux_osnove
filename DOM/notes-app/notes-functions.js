@@ -1,4 +1,4 @@
-console.log(uuidv4());
+// console.log(uuidv4());
 
 
 //Read existing notes from loacalstorage
@@ -33,7 +33,7 @@ const removeNote = function (id){
 //generat the dom structure for the note 
 const generateNoteDOM = function(note){
     const noteEl = document.createElement('div')
-    const textEl = document.createElement('span')
+    const textEl = document.createElement('a')
     const button = document.createElement('button')
     
     //setup the remove note button
@@ -46,14 +46,15 @@ const generateNoteDOM = function(note){
     })
 
 
-        //setup the note tittle text
-        if(note.title.length > 0){
-            textEl.textContent = note.title
-        } else {
-            textEl.textContent = 'Nema naslova BRE'
-        }
-        noteEl.appendChild(textEl)
-        return noteEl
+    //setup the note tittle text
+    if(note.title.length > 0){
+        textEl.textContent = note.title
+    } else {
+        textEl.textContent = 'Nema naslova BRE'
+    }
+    textEl.setAttribute('href', `/edit.html#${note.id}`)
+    noteEl.appendChild(textEl)
+    return noteEl
 }
 // render application notes
 const renderNotes = function(notes, filters){

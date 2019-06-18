@@ -35,14 +35,19 @@ renderNotes(notes,filters)
 
 document.querySelector('#create-note').addEventListener('click', function(e){
     // e.target.textContent = 'the button was clicked'
+    const id  = uuidv4()
     notes.push({
-        id: uuidv4(), 
+        id: id, 
         title: '',
         body: ''
 
     })
     saveNotes(notes)
-    renderNotes(notes,filters)
+    // renderNotes(notes,filters) // ako ides na drug stranicu , sto cinis sa ovim ispod,
+    //ovo ponovu ucitavanje ti ne treba
+    // const aaa = notes.id
+    // console.log(aaa);
+    location.assign(`/edit.html#${id}`)
 })
 
 document.querySelector('#search-text').addEventListener('input' , function(e){
