@@ -47,8 +47,8 @@ document.querySelector('#create-note').addEventListener('click', function(e){
     //ovo ponovu ucitavanje ti ne treba
     // const aaa = notes.id
     // console.log(aaa);
-    location.assign(`/edit.html#${id}`)
-})
+    location.assign(`/edit.html#${id}`) // ovo bukvalno znaci preusmeri ga na stranicu 'edit.html'
+})                                  //sa '#' i id-ijem datog note-a
 
 document.querySelector('#search-text').addEventListener('input' , function(e){
     filters.searchText = e.target.value

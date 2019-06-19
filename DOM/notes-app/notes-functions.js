@@ -1,24 +1,22 @@
 // console.log(uuidv4());
 
-
 //Read existing notes from loacalstorage
 
 const getSavedNotes = function(){
     
 const notesJson = localStorage.getItem('notes')
 
-if(notesJson !== null ) {
-    return JSON.parse(notesJSON)
-} else {
-    return []
-}
+    if(notesJson !== null ) {
+        return JSON.parse(notesJson)
+    } else {
+        return []
+    }
 }
 
 //Save the notes to the local storage
 const saveNotes = function(notes) {
     localStorage.setItem('notes', JSON.stringify(notes))
 }
-
 //remove note from the list
 
 const removeNote = function (id){
@@ -54,6 +52,7 @@ const generateNoteDOM = function(note){
     }
     textEl.setAttribute('href', `/edit.html#${note.id}`)
     noteEl.appendChild(textEl)
+
     return noteEl
 }
 // render application notes
