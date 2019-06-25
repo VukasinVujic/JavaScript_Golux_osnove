@@ -1,4 +1,4 @@
-const notes =  getSavedNotes()
+let notes =  getSavedNotes()
 
 // const p = document.querySelector('h1')
 // p.remove()
@@ -69,5 +69,13 @@ document.querySelector('#for-fun').addEventListener('change',function(e){
         console.log(e.target.checked);  
         
 })
+*/  
 
-*/
+window.addEventListener('storage', function(e){
+    if(e.key === 'notes'){
+        notes = JSON.parse(e.newValue)
+        renderNotes(notes, filters)
+    }
+})
+
+
