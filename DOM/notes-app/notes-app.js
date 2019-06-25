@@ -77,5 +77,59 @@ window.addEventListener('storage', function(e){
         renderNotes(notes, filters)
     }
 })
+//Unix epic - January 1st 1970 00:00:00 // ovo je tacka zero kada se date gleda kao broj
+// sve pre toga je negativno
+// const now = new Date('January 21 2001 6:25:01')
+// console.log(now.toString());
+
+/*
+const now = new Date()
+const timeStamp = now.getTime()
+const myDate = new Date(timeStamp)
+console.log(myDate.getFullYear());
+*/
+
+/*
+console.log(`Year is now ${now.getFullYear()}`);
+console.log(`Mounth is now  ${now.getMonth()}`);
+console.log(`date is now  ${now.getDate()}`);
+console.log(`hour is now  ${now.getHours()}`);
+console.log(`Minut is now  ${now.getMinutes()}`);
+console.log(`Second is now  ${now.getSeconds()}`);
+*/
+
+
+const task1 = new Date('February 23 2014 06:12:34')
+const task2 = new Date('March 4 2004 06:12:34')
+
+
+const timeStamp1 =  task1.getTime()
+const timeStamp2 =  task2.getTime()
+
+/*
+if(timeStamp1 < timeStamp2) {
+    console.log(task1);
+} else {
+    console.log(task2);
+}
+*/
+/*
+const now = moment();
+
+now.add(1, 'week').subtract(50, 'day')
+// now.minute(1)
+// now.second(20)
+// console.log(now.toString());
+console.log(now.format('MMMM Do, YYYY'));
+console.log(now.fromNow());
+
+const timeStamp3 = now.valueOf()
+console.log(moment(nowTimeStamp3).toString());
+*/
+
+const trenutak = moment()
+
+trenutak.year(1987).month('February').dayOfYear(12)
+console.log(trenutak.format('MMM D,YYYY'));
 
 
