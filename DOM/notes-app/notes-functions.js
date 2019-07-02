@@ -70,3 +70,8 @@ const renderNotes = function(notes, filters){
     })
 }
 
+//generate the last edited massage 
+
+const generateLastEdited = function(timeStamp){
+    return `Last time edited ${moment(timeStamp).fromNow()}`
+}

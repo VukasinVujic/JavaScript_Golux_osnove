@@ -36,10 +36,14 @@ renderNotes(notes,filters)
 document.querySelector('#create-note').addEventListener('click', function(e){
     // e.target.textContent = 'the button was clicked'
     const id  = uuidv4()
+    const forCreate = moment().format("D, MMMM YYYY, h:mm:ss");
+    const forUpdate = moment().format("D, MMMM YYYY, h:mm:ss");
     notes.push({
         id: id, 
         title: '',
-        body: ''
+        body: '',
+        createdAt: forCreate,
+        updatedAt: forUpdate
 
     })
     saveNotes(notes)
@@ -126,10 +130,10 @@ console.log(now.fromNow());
 const timeStamp3 = now.valueOf()
 console.log(moment(nowTimeStamp3).toString());
 */
-
+/*
 const trenutak = moment()
 
 trenutak.year(1987).month('February').dayOfYear(12)
 console.log(trenutak.format('MMM D,YYYY'));
-
+*/
 
