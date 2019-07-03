@@ -7,9 +7,10 @@ const getSavedNotes = () => {    // arrow function
 
 const notesJson = localStorage.getItem('notes')
 
-return notesJson !== null ? JSON.parse(notesJson) : [] // using ternarny operator as substitution for if
-
-    // if(notesJson !== null ) {
+return notesJson ? JSON.parse(notesJson) : [] // using ternarny operator as substitution for if
+// !== null // taking it from above(after first notesJson) because it is not nessary, the coud would do the same withou it, Truty/Falsy
+    
+// if(notesJson !== null ) {
     //     return JSON.parse(notesJson)
     // } else {
     //     return []

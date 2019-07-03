@@ -20,7 +20,15 @@ const showErrorPage = () => {
 
 const message =  myAge > 21 ? showPage() : showErrorPage()
 
-console.log(message);
+// console.log(message);
 
 const team = ['Tyler', 'Porter','Pero', 'Marko', 'djole']
-console.log(team.length <=40 ? `Team size: ${team.length}`: `Too many on the team` );
+// console.log(team.length <=40 ? `Team size: ${team.length}`: `Too many on the team` );
+
+var aaa
+
+if(aaa){
+    console.log('Tacno');
+} else {
+    console.log('NE TACNO BREEEEE');
+}

@@ -8,7 +8,7 @@ const noteId = location.hash.substring(1) // just going in the location(inside c
 let  notes = getSavedNotes()
 let note = notes.find((note) => note.id === noteId ) // checking if id from note is equal with the one in URL 
 
-if(note === undefined){
+if(!note){
      location.assign('/index.html')
 }
 
@@ -46,7 +46,7 @@ window.addEventListener('storage', (e) => {
        notes = JSON.parse(e.newValue)
         note = notes.find((note) => note.id === noteId) // checking if id from note is equal with the one in URL 
     
-    if(note === undefined){
+    if(!note){
          location.assign('/index.html')
     }
     
