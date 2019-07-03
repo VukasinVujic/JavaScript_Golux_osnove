@@ -2,8 +2,9 @@
 
 //Read existing notes from loacalstorage
 
-const getSavedNotes = function(){
-    
+// const getSavedNotes = function(){
+const getSavedNotes = function () {    
+
 const notesJson = localStorage.getItem('notes')
 
     if(notesJson !== null ) {
@@ -14,15 +15,18 @@ const notesJson = localStorage.getItem('notes')
 }
 
 //Save the notes to the local storage
-const saveNotes = function(notes) {
+// const saveNotes = function(notes) {
+const saveNotes = function (notes) {
+    console.log('aaaaa');
     localStorage.setItem('notes', JSON.stringify(notes))
 }
 //remove note from the list
 
 const removeNote = function (id){
-    const noteIndex = notes.findIndex(function(note){
-        return note.id === id
-    })
+// const removeNote = (id)=>{
+
+    // const noteIndex = notes.findIndex(function(note){
+    const noteIndex = notes.findIndex((note) => note.id === id)
     if(noteIndex > -1){
         notes.splice(noteIndex,1)
     }
@@ -63,7 +67,7 @@ const renderNotes = function(notes, filters){
     
     document.querySelector('#notes').innerHTML = ''
     
-    filteredNotes.forEach(function(note){
+        filteredNotes.forEach(function(note){
         const noteEl = generateNoteDOM(note)
 
         document.querySelector('#notes').appendChild(noteEl)
@@ -75,3 +79,4 @@ const renderNotes = function(notes, filters){
 const generateLastEdited = function(timeStamp){
     return `Last time edited ${moment(timeStamp).fromNow()}`
 }
+

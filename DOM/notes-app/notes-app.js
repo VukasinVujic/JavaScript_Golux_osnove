@@ -14,6 +14,7 @@ let notes =  getSavedNotes()
 
 const filters = {
     searchText: '',
+    sortyBy: 'byEdited'
 }
 
 // const user = {
@@ -36,21 +37,22 @@ renderNotes(notes,filters)
 document.querySelector('#create-note').addEventListener('click', function(e){
     // e.target.textContent = 'the button was clicked'
     const id  = uuidv4()
-    const forCreate = moment().format("D, MMMM YYYY, h:mm:ss");
-    const forUpdate = moment().format("D, MMMM YYYY, h:mm:ss");
+    // const forCreate = moment().format("D, MMMM YYYY, h:mm:ss");
+    // const forUpdate = moment().format("D, MMMM YYYY, h:mm:ss");
+    const timeStamp = moment().valueOf()
     notes.push({
         id: id, 
         title: '',
         body: '',
-        createdAt: forCreate,
-        updatedAt: forUpdate
-
+        // createdAt: forCreate,
+        // updatedAt: forUpdate
+        createdAt: timeStamp,
+        updatedAt: timeStamp
     })
     saveNotes(notes)
     // renderNotes(notes,filters) // ako ides na drug stranicu , sto cinis sa ovim ispod,
     //ovo ponovu ucitavanje ti ne treba
     // const aaa = notes.id
-    // console.log(aaa);
     location.assign(`/edit.html#${id}`) // ovo bukvalno znaci preusmeri ga na stranicu 'edit.html'
 })                                  //sa '#' i id-ijem datog note-a
 
@@ -59,22 +61,22 @@ document.querySelector('#search-text').addEventListener('input' , function(e){
     renderNotes(notes,filters)
 })
 document.querySelector('#filter-by').addEventListener('change', function(e){
-    console.log(e.target.value);
+    // console.log(e.target.value); just printing for that option in html
+    filters.sortyBy = e.target.value
+    renderNotes(notes,filters)
+
 })
 
 // document.querySelector('#name-form').addEventListener('submit', function(e){
 //     e.preventDefault()
 //     console.log(e.target.elements.firstName.value); 
 //     e.target.elements.firstName.value = ''
-
 // })
 /*
 document.querySelector('#for-fun').addEventListener('change',function(e){
-        console.log(e.target.checked);  
-        
+        console.log(e.target.checked);      
 })
 */  
-
 window.addEventListener('storage', function(e){
     if(e.key === 'notes'){
         notes = JSON.parse(e.newValue)
