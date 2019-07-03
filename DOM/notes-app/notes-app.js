@@ -34,7 +34,7 @@ const filters = {
 
 renderNotes(notes,filters)
 
-document.querySelector('#create-note').addEventListener('click', function(e){
+document.querySelector('#create-note').addEventListener('click',(e) => {
     // e.target.textContent = 'the button was clicked'
     const id  = uuidv4()
     // const forCreate = moment().format("D, MMMM YYYY, h:mm:ss");
@@ -56,11 +56,11 @@ document.querySelector('#create-note').addEventListener('click', function(e){
     location.assign(`/edit.html#${id}`) // ovo bukvalno znaci preusmeri ga na stranicu 'edit.html'
 })                                  //sa '#' i id-ijem datog note-a
 
-document.querySelector('#search-text').addEventListener('input' , function(e){
+document.querySelector('#search-text').addEventListener('input' ,(e) => {
     filters.searchText = e.target.value
     renderNotes(notes,filters)
 })
-document.querySelector('#filter-by').addEventListener('change', function(e){
+document.querySelector('#filter-by').addEventListener('change',(e) => {
     // console.log(e.target.value); just printing for that option in html
     filters.sortBy = e.target.value
     renderNotes(notes,filters)
@@ -77,7 +77,7 @@ document.querySelector('#for-fun').addEventListener('change',function(e){
         console.log(e.target.checked);      
 })
 */  
-window.addEventListener('storage', function(e){
+window.addEventListener('storage',(e) => {
     if(e.key === 'notes'){
         notes = JSON.parse(e.newValue)
         renderNotes(notes, filters)

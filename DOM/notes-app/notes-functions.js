@@ -2,8 +2,8 @@
 
 //Read existing notes from loacalstorage
 
-// const getSavedNotes = function(){
-const getSavedNotes = function () {    
+// const getSavedNotes = function(){ //normal function
+const getSavedNotes = () => {    // arrow function
 
 const notesJson = localStorage.getItem('notes')
 
@@ -15,25 +15,27 @@ const notesJson = localStorage.getItem('notes')
 }
 
 //Save the notes to the local storage
-// const saveNotes = function(notes) {
-const saveNotes = function (notes) {
+// const saveNotes = function(notes) { //normal function
+const saveNotes = (notes) => { // arrow function
     localStorage.setItem('notes', JSON.stringify(notes))
     // localStorage.getItem('notes') //just checking local storage 
 }
 //remove note from the list
 
-const removeNote = function (id){
-// const removeNote = (id)=>{
+// const removeNote = function (id){ //normal function
+const removeNote = (id)=>{ // arrow function
 
-    // const noteIndex = notes.findIndex(function(note){
-    const noteIndex = notes.findIndex((note) => note.id === id)
+    // const noteIndex = notes.findIndex(function(note){ //normal function
+    //return note.id === id
+    // }
+    const noteIndex = notes.findIndex((note) => note.id === id) // arrow function
     if(noteIndex > -1){
         notes.splice(noteIndex,1)
-    }
+    } 
 }
 
 //generat the dom structure for the note 
-const generateNoteDOM = function(note){
+const generateNoteDOM = (note) => {
     const noteEl = document.createElement('div')
     const textEl = document.createElement('a')
     const button = document.createElement('button')
@@ -41,7 +43,7 @@ const generateNoteDOM = function(note){
     //setup the remove note button
     button.textContent = 'x'
     noteEl.appendChild(button)
-    button.addEventListener('click', function(){
+    button.addEventListener('click', () => {
         removeNote(note.id)
         saveNotes(notes)
         renderNotes(notes,filters)
@@ -60,9 +62,9 @@ const generateNoteDOM = function(note){
     return noteEl
 }
 // function for that option thing in HTML, sorting notes by three ways, alhpabetic...
-const sortNotes = function(notes, sortBy){
+const sortNotes = (notes, sortBy) =>{
     if(sortBy === 'byEdited'){
-        return notes.sort(function (a,b){ // always comparing two items of the notes
+        return notes.sort((a,b) => { // always comparing two items of the notes
             if(a.updatedAt > b.updatedAt) { // checking which one is last updated and putting that one up
                 return -1
             } else if (a.updatedAt < b.updatedAt) {
@@ -72,7 +74,7 @@ const sortNotes = function(notes, sortBy){
             }
         })
     } else if (sortBy === 'byCreated'){
-        return notes.sort(function(a,b) { // checking which one is last build and putting that one up
+        return notes.sort((a,b) => { // checking which one is last build and putting that one up
             if(a.createdAt > b.createdAt){
                 return -1
             } else if (a.createdAt < b.createdAt){
@@ -82,7 +84,7 @@ const sortNotes = function(notes, sortBy){
             }
         }) 
     } else if (sortBy === 'alphabetical'){
-        return notes.sort(function (a,b){
+        return notes.sort((a,b) => {
             if(a.title.toLowerCase() < b.title.toLowerCase()){
                 return -1
             } else if (a.title.toLowerCase() > b.title.toLowerCase()){
@@ -97,11 +99,9 @@ const sortNotes = function(notes, sortBy){
 }
 
 // render application notes
-const renderNotes = function(notes, filters){
+const renderNotes = (notes, filters) => {
     notes = sortNotes(notes, filters.sortBy)
-    const filteredNotes = notes.filter(function(note){
-        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
+    const filteredNotes = notes.filter((note) => note.title.toLowerCase().includes(filters.searchText.toLowerCase()))
     
     document.querySelector('#notes').innerHTML = ''
     
@@ -114,7 +114,4 @@ const renderNotes = function(notes, filters){
 
 //generate the last edited massage 
 
-const generateLastEdited = function(timeStamp){
-    return `Last time edited ${moment(timeStamp).fromNow()}`
-}
-
+const generateLastEdited = (timeStamp) => `Last time edited ${moment(timeStamp).fromNow()}`
