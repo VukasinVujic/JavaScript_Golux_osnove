@@ -7,11 +7,15 @@ const getSavedNotes = () => {    // arrow function
 
 const notesJson = localStorage.getItem('notes')
 
-    if(notesJson !== null ) {
-        return JSON.parse(notesJson)
-    } else {
-        return []
-    }
+return notesJson !== null ? JSON.parse(notesJson) : [] // using ternarny operator as substitution for if
+
+    // if(notesJson !== null ) {
+    //     return JSON.parse(notesJson)
+    // } else {
+    //     return []
+    // }
+
+    
 }
 
 //Save the notes to the local storage
