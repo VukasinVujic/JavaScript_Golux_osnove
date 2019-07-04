@@ -7,7 +7,12 @@ const getSavedNotes = () => {    // arrow function
 
 const notesJson = localStorage.getItem('notes')
 
-return notesJson ? JSON.parse(notesJson) : [] // using ternarny operator as substitution for if
+try {
+    return notesJson ? JSON.parse(notesJson) : [] // using ternarny operator as substitution for if
+} catch(e){
+    return []
+}
+ 
 // !== null // taking it from above(after first notesJson) because it is not nessary, the coud would do the same withou it, Truty/Falsy
     
 // if(notesJson !== null ) {

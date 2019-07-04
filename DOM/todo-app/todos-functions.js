@@ -4,9 +4,14 @@ console.log(uuidv4());
 
 // fetching existing todos from localstorage
 const getSaveTodos = () => {
-
 const todosJSON = localStorage.getItem('todos');
-return todosJSON ? JSON.parse(todosJSON) : []
+
+try {
+    return todosJSON ? JSON.parse(todosJSON) : []
+} catch(e){
+    return []
+}
+
 // !== null(after todosJSONn) addition don't need 
 
     // if(todosJSON !== null) {
