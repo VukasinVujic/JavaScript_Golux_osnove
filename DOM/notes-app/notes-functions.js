@@ -1,7 +1,19 @@
-// console.log(uuidv4());
+'use strict'
+
+/*
+let data // if you don't write this but write the method procesData() the browser will work
+// however if you put 'use strict' the code will not work
+const ispPublic = true // the same thing here, withou using 'use strict' the browser will work
+
+const procesData = () => {
+    data ='123456' // d
+}
+
+procesData();
+console.log(data);
+*/
 
 //Read existing notes from loacalstorage
-
 // const getSavedNotes = function(){ //normal function
 const getSavedNotes = () => {    // arrow function
 

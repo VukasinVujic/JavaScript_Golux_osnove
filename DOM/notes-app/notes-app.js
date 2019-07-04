@@ -1,3 +1,5 @@
+'use strict'
+
 let notes =  getSavedNotes()
 
 // const p = document.querySelector('h1')
