@@ -4,7 +4,7 @@ const product = products[0]
 
 var aaa
 let bbb
-const ccc 
+// const ccc 
 
 if(ccc){
     console.log('Product found');
