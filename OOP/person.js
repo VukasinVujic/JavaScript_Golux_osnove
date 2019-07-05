@@ -29,6 +29,10 @@ console.log(me.getBio());
 
 const person2 = new Person('Marko', 'Maric', '54')
 
+Person.prototype.getBio = function () {
+    return 'Testing testing'
+}
+
 console.log(person2.getBio());
 
 
