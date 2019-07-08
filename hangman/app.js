@@ -22,6 +22,32 @@ const team =  new Array ['Luke', 'Marko']
 console.log(team);
 console.log(team.hasOwnProperty('length'));
 */
-
+/*
 const getScore = () => 1
 console.log(getScore);
+*/
+
+// const status = document.querySelector('#status')
+const puzzleEl = document.querySelector('#puzzle')
+const guessesEL = document.querySelector('#guesses')
+const message = document.querySelector('#message')
+const game1 = new Hangman('Cat',2)
+
+// status.textContent = game1.showStatus() //my way
+puzzleEl.textContent = game1.getPuzzle()
+guessesEL.textContent = game1.remaingGuesses
+message.textContent = game1.getStatusMessage()
+console.log(game1.status);
+
+window.addEventListener('keypress', function(e){ //event with presssed any key of a letter or number
+    const guess = String.fromCharCode(e.charCode)
+    game1.makeQuess(guess)
+
+    //status.textContent = game1.showStatus() //my way
+    puzzleEl.textContent = game1.getPuzzle()
+    guessesEL.textContent = game1.remaingGuesses
+    message.textContent = game1.getStatusMessage()
+
+    console.log(game1.status);
+
+})
