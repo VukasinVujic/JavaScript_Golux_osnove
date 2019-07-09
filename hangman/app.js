@@ -31,12 +31,12 @@ console.log(getScore);
 const puzzleEl = document.querySelector('#puzzle')
 const guessesEL = document.querySelector('#guesses')
 const message = document.querySelector('#message')
-const game1 = new Hangman('Cat',2)
+const game1 = new Hangman('Cat dog',2)
 
 // status.textContent = game1.showStatus() //my way
-puzzleEl.textContent = game1.getPuzzle()
+puzzleEl.textContent = game1.puzzle
 guessesEL.textContent = game1.remaingGuesses
-message.textContent = game1.getStatusMessage()
+message.textContent = game1.statusMessage
 console.log(game1.status);
 
 window.addEventListener('keypress', function(e){ //event with presssed any key of a letter or number
@@ -44,9 +44,9 @@ window.addEventListener('keypress', function(e){ //event with presssed any key o
     game1.makeQuess(guess)
 
     //status.textContent = game1.showStatus() //my way
-    puzzleEl.textContent = game1.getPuzzle()
+    puzzleEl.textContent = game1.puzzle
     guessesEL.textContent = game1.remaingGuesses
-    message.textContent = game1.getStatusMessage()
+    message.textContent = game1.statusMessage
 
     console.log(game1.status);
 
