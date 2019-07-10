@@ -50,9 +50,10 @@ window.addEventListener('keypress',(e) => { //event with presssed any key of a l
 
 })
 
+// making an HTTP request
 const request = new XMLHttpRequest()
 
-request.addEventListener('readystatechange', (e) => {
+request.addEventListener('readystatechange', (e) => { // when document.readyState , changes this event fires
      if(e.target.readyState === 4 && e.target.status === 200){
          const data = JSON.parse(e.target.responseText)  
          console.log(data);
@@ -61,8 +62,8 @@ request.addEventListener('readystatechange', (e) => {
      }
 })
 
-request.open('GET','http://puzzle.mead.io/puzzle?wordCount=3')
-request.send()
+request.open('GET','http://puzzle.mead.io/puzzle?wordCount=3') // a way to initialize a request 
+request.send() // a way to start a proces of sending a request
 
 const countryRequest = new XMLHttpRequest()
 const countryCode = "MX"
