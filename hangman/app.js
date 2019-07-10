@@ -50,7 +50,16 @@ window.addEventListener('keypress',(e) => { //event with presssed any key of a l
 
 })
 
+  getPuzzle((error,puzzle) => { // a way how use a callback function 
+    if(error) {
+        console.log(`Error came: ${error} "if deo" u app.js`);
+    } else {
+        console.log(`${puzzle}; "else deo" u app.js`);
+    }
+  })
+
 // making an HTTP request
+/*
 const request = new XMLHttpRequest()
 
 request.addEventListener('readystatechange', (e) => { // when document.readyState , changes this event fires
@@ -80,3 +89,5 @@ countryRequest.addEventListener('readystatechange', (e) => {
 
 countryRequest.open('GET', 'http://restcountries.eu/rest/v2/all')
 countryRequest.send()
+
+*/
