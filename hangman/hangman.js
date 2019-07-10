@@ -18,7 +18,6 @@ class Hangman {
     }
     get puzzle(){
     let puzzle = ''
-
     this.word.forEach( (letter) => {
          if(this.guessedLetters.includes(letter) || letter === ' '){
             puzzle += letter
@@ -89,7 +88,6 @@ class Hangman {
             if(this.remaingGuesses > 0 && !this.getPuzzle().includes('*'))
                 this.staus = 'failed' 
                 return `URA URA you are a winner`
-            
         }
         */
     }

@@ -1,3 +1,4 @@
+// 
 /*
 const product = {
     name: 'influence'
@@ -14,8 +15,6 @@ console.log(product.someNewMethod());
 // Function: myFunction --> Function.prototype --> Object.prototype --> null
 // String: myString --> String.prototype --> Object.prototype --> null
 // Boolean: myBoolean --> Boolean.prototype --> Object.prototype --> null
-
-
 
 /*
 const team =  new Array ['Luke', 'Marko']
@@ -39,7 +38,7 @@ guessesEL.textContent = game1.remaingGuesses
 message.textContent = game1.statusMessage
 console.log(game1.status);
 
-window.addEventListener('keypress', function(e){ //event with presssed any key of a letter or number
+window.addEventListener('keypress',(e) => { //event with presssed any key of a letter or number
     const guess = String.fromCharCode(e.charCode)
     game1.makeQuess(guess)
 
@@ -47,7 +46,18 @@ window.addEventListener('keypress', function(e){ //event with presssed any key o
     puzzleEl.textContent = game1.puzzle
     guessesEL.textContent = game1.remaingGuesses
     message.textContent = game1.statusMessage
-
     console.log(game1.status);
 
 })
+
+const request = new XMLHttpRequest()
+
+request.addEventListener('readystatechange', (e) => {
+     if(e.target.readyState === 4){
+         const data = JSON.parse(e.target.responseText)  
+         console.log(data);
+     }
+})
+
+request.open('GET','http://puzzle.mead.io/puzzle')
+request.send()
